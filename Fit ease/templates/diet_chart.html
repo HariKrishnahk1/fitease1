@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Diet Chart</title>
+
+<style>
+body {
+    background: linear-gradient(to bottom right, #ffd6ff, #d6eaff, #ffc8dd);
+    font-family: Arial;
+    margin: 0;
+    padding: 20px;
+}
+.container {
+    max-width: 900px;
+    margin: auto;
+}
+.card, .diet-box {
+    background: white;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+    margin-bottom: 25px;
+}
+.section-title {
+    font-size: 22px;
+    color: #ff0080;
+    margin-top: 10px;
+}
+.food-item {
+    margin: 8px 0;
+}
+.back-btn {
+    display: inline-block;
+    margin-top: 15px;
+    text-decoration: none;
+    color: #ff2e7a;
+    font-weight: bold;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="card">
+        <h2>BMI: {{ bmi }}</h2>
+        <p><b>Category:</b> {{ category }}</p>
+        <p><b>Diet Style:</b> {{ diet_type }}</p>
+        <a href="/" class="back-btn">← Back</a>
+    </div>
+
+    <div class="diet-box">
+        <h2>Recommended Diet Chart</h2>
+        <!-- INDIAN ------------------------------------------------------->        
+        {% if diet_type == "Indian" %}
+            {% if category == "Underweight" %}
+                <div class="section-title">Indian Underweight Diet</div>
+                <div class="food-item">🔹 Aloo paratha with ghee, banana shake</div>
+                <div class="food-item">🔹 Paneer bhurji, dal makhani, jeera rice</div>
+                <div class="food-item">🔹 Nuts, dates, sweet lassi</div>
+
+            {% elif category == "Normal" %}
+                <div class="section-title">Indian Normal Diet</div>
+                <div class="food-item">🔹 Idli + sambar, oats upma, poha</div>
+                <div class="food-item">🔹 Dal, sabzi, roti, curd</div>
+                <div class="food-item">🔹 Fruits, buttermilk</div>
+
+            {% elif category == "Overweight" %}
+                <div class="section-title">Indian Overweight Diet</div>
+                <div class="food-item">🔹 Moong dal chilla, oats dosa</div>
+                <div class="food-item">🔹 Salad, sprouts, green tea</div>
+                <div class="food-item">🔹 Light roti + sabzi, soups</div>
+
+            {% else %}
+                <div class="section-title">Indian Obesity Diet</div>
+                <div class="food-item">🔹 Oats, steamed idli</div>
+                <div class="food-item">🔹 Vegetable soup, millet khichdi</div>
+                <div class="food-item">🔹 Strict avoid: sweets, fried foods</div>
+            {% endif %}
+        {% endif %}
+
+        <!-- CONTINENTAL ------------------------------------------------->
+        {% if diet_type == "Continental" %}
+            {% if category == "Underweight" %}
+                <div class="section-title">Continental Underweight Diet</div>
+                <div class="food-item">🔹 Cheese omelette, croissants</div>
+                <div class="food-item">🔹 Pasta, grilled chicken</div>
+                <div class="food-item">🔹 Yogurt parfait, nuts</div>
+
+            {% elif category == "Normal" %}
+                <div class="section-title">Continental Normal Diet</div>
+                <div class="food-item">🔹 Scrambled eggs, fruit bowl</div>
+                <div class="food-item">🔹 Grilled chicken, quinoa</div>
+                <div class="food-item">🔹 Soups, salads</div>
+
+            {% elif category == "Overweight" %}
+                <div class="section-title">Continental Overweight Diet</div>
+                <div class="food-item">🔹 Avocado toast, boiled eggs</div>
+                <div class="food-item">🔹 Leafy salads, roasted nuts</div>
+                <div class="food-item">🔹 Low-fat cheese, quinoa bowls</div>
+
+            {% else %}
+                <div class="section-title">Continental Obesity Diet</div>
+                <div class="food-item">🔹 Oats, green tea</div>
+                <div class="food-item">🔹 Steamed beans, chicken breast</div>
+                <div class="food-item">🔹 Avoid pizza, burgers, sugary snacks</div>
+            {% endif %}
+        {% endif %}
+
+    </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Select Diet Preference</title>
+
+<style>
+    body {
+        background: linear-gradient(to bottom right, #ffdee2, #e0f2ff);
+        font-family: Arial;
+        margin: 0;
+        padding: 40px;
+        text-align: center;
+    }
+
+    h2 {
+        color: #ff2e7a;
+    }
+
+    .cards {
+        display: flex;
+        justify-content: center;
+        margin-top: 40px;
+        gap: 30px;
+    }
+
+    .card {
+        width: 250px;
+        background: white;
+        border-radius: 20px;
+        box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+        overflow: hidden;
+        cursor: pointer;
+        transition: transform .3s ease;
+    }
+
+    .card:hover {
+        transform: scale(1.06);
+    }
+
+    img {
+        width: 100%;
+        height: 160px;
+        object-fit: cover;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+        border: none;
+        background: #ff4f9a;
+        color: white;
+        font-size: 18px;
+        cursor: pointer;
+    }
+</style>
+</head>
+<body>
+
+<h2>Your BMI: {{ bmi }} <br> Category: {{ category }}</h2>
+<h3>Select Your Diet Preference</h3>
+
+<form action="/diet_chart" method="POST">
+    <!-- Hidden fields to send bmi and category to diet_chart route -->
+    <input type="hidden" name="bmi" value="{{ bmi }}">
+    <input type="hidden" name="category" value="{{ category }}">
+
+    <div class="cards">
+
+        <!-- Indian Card -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='pics/india.png') }}">
+            <button type="submit" name="diet_type" value="Indian">Indian Diet</button>
+        </div>
+
+        <!-- Continental Card -->
+        <div class="card">
+            <img src="{{ url_for('static', filename='pics/cont.png') }}">
+            <button type="submit" name="diet_type" value="Continental">Continental Diet</button>
+        </div>
+
+    </div>
+</form>
+
+</body>
+</html>
